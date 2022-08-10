@@ -83,37 +83,43 @@ padding = {top = 1}
 element = {type = "BlankLine"}
 {% endblock header_table %}
 
-{% block body_thead %}
+{% block records_head %}
 [[body.element]]
 type = "TableLayout"
 weight = [16, 12, 14, 14, 14, 14, 14, 16]
-padding = {top = 1, bottom = 1}
-text_style={ bold=true, font_size=12}
+padding = { top = 1, bottom = 1 }
+text_style={ bold=true, font_size=12 }
 
 [[body.element.row]]
+
 [[body.element.row.element]]
 type="Text"
 [[body.element.row.element.content]]
 value="BatchNo"
+
 [[body.element.row.element]]
 type="Text"
 [[body.element.row.element.content]]
 value=" Exp.Date"
+
 [[body.element.row.element]]
 type="Text"
 alignment="Right"
 [[body.element.row.element.content]]
 value="Stock"
+
 [[body.element.row.element]]
 type="Text"
 alignment="Right"
 [[body.element.row.element.content]]
 value="P.Rate"
+
 [[body.element.row.element]]
 type="Text"
 alignment="Right"
 [[body.element.row.element.content]]
 value="MRP"
+
 [[body.element.row.element]]
 type="Text"
 alignment="Right"
@@ -131,4 +137,111 @@ type = "PaddedElement"
 padding = {top = 1}
 element = {type = "BlankLine"}
 
-{% endblock body_thead %}
+{% endblock records_head %}
+
+{% block records_body%}
+[[body.element]]
+type = "TableLayout"
+weight = [16, 12, 14, 14, 14, 14, 16]
+padding = { top = 1, bottom = 1 }
+text_style={ font_size=11 }
+[body.element.cell_decorator]
+type = "SimpleCellDecorator"
+inner = true
+outer = true
+cont = true
+[body.element.cell_decorator.line_style]
+thickness = 0.1
+color = {greyscale = 127}
+
+{% for record in records %}
+[[body.element.row]]
+
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.batchNo}}"
+style = { shrink = true }
+
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.expiry}}"
+
+[[body.element.row.element]]
+type="Text"
+alignment="Right"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.closing}}"
+style = { shrink = true }
+
+[[body.element.row.element]]
+type="Text"
+alignment="Right"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.pRate}}"
+style = { shrink = true }
+
+[[body.element.row.element]]
+type="Text"
+alignment="Right"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.mrp}}"
+style = { shrink = true }
+
+[[body.element.row.element]]
+type="Text"
+alignment="Right"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.sRate}}"
+style = { shrink = true }
+
+[[body.element.row.element]]
+type="Text"
+alignment="Right"
+padding = {top = 1, right = 1, bottom = 1, left = 1}
+[[body.element.row.element.content]]
+value="{{record.value}}"
+style = { shrink = true }
+
+{% endfor %}
+{% endblock records_body%}
+
+{% block footer%}
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+element = {type = "BlankLine"}
+
+[[body.element]]
+type = "TableLayout"
+weight = [50,50]
+padding = { top = 1, bottom = 1 }
+text_style={ bold=true, font_size=12 }
+
+[[body.element.row]]
+
+[[body.element.row.element]]
+type="Text"
+[[body.element.row.element.content]]
+value="Total Stock : {{closing}}"
+style = { shrink = true }
+
+[[body.element.row.element]]
+type="Text"
+alignment="Right"
+[[body.element.row.element.content]]
+value="Total Value :  Rs.{{value}}"
+style = { shrink = true }
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+element = {type = "BlankLine"}
+{% endblock footer%}

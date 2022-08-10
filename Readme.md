@@ -1,7 +1,7 @@
 # Tera Layouts
 
 # Run Command
-## ttdev -t templates/tmpl_design.toml.jinja -d data/tmpl_data.json
+## ttdev -t templates/inventory_info.toml.jinja -d data/inventory_info.json
 
 # Reference
 ## https://jinja.palletsprojects.com/en/3.1.x/templates/
