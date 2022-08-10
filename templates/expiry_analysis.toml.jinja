@@ -1,0 +1,180 @@
+title = "{{title}}"
+conformance = "Minimal"
+paper_size = {width = 210, height = 297}
+
+[decorator]
+type = "SimplePageDecorator"
+margins = { top = 10, right = 10, bottom = 10, left = 10 }
+
+{# Header #}
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{organization}}"
+style = {font_size = 17, bold = true}
+
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{address}}"
+style = {font_size = 12}
+
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{title}}"
+style = {font_size = 13}
+
+{% if fromDate %}
+[[body.element]]
+type = "Text"
+alignment = "Center"
+[[body.element.content]]
+value="{{fromDate}} to {{toDate}}"
+style = {font_size= 11, bold= true}
+{% else %}
+[[body.element]]
+type = "Text"
+alignment = "Center"
+[[body.element.content]]
+value="As On Date: {{toDate}}"
+style = {font_size=11, bold= true}
+{% endif %}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
+
+{# Body #}
+[[body.element]]
+type = "TableLayout"
+weight = [18, 2, 80]
+padding = {top = 1}
+text_style = {bold = true, font_size = 12, line_spacing = 1.5}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Branch"
+padding = {top = 1}
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+padding = {top = 1}
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{branch}}"
+padding = {top = 1}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
+
+[[body.element]]
+type = "TableLayout"
+weight = [12, 43, 15, 14, 16]
+padding = {top = 1, left = 1}
+text_style = {bold = true, font_size = 12}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]] 
+value =  "Expiry"
+padding = {top = 1, left = 1}
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]] 
+value =  "Particulars"
+padding = {top = 1, left = 1}
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]] 
+value =  "BatchNo"
+padding = {top = 1}
+
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+[[body.element.row.element.content]] 
+value =  "Stock"
+padding = {top = 1, right = 1}
+
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+[[body.element.row.element.content]] 
+value =  "Value"
+padding = {top = 1, right = 1}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
+
+[[body.element]]
+type = "TableLayout"
+weight = [12, 43, 15, 14, 16]
+text_style = {font_size = 11}
+padding = {top = 1, bottom = 1}
+
+[body.element.cell_decorator]
+type = "SimpleCellDecorator"
+inner = true
+outer = true
+[body.element.cell_decorator.line_style]
+thickness = 0.1
+color = {greyscale = 127} 
+
+{% for record in records %}
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{record.expiry}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{record.inventoryName}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{record.batchNo}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{record.closing}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{record.assetValue}}"
+style = {shrink = true}
+{% endfor %} 
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"

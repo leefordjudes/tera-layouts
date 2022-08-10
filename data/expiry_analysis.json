@@ -1,0 +1,30 @@
+{
+    "title": "Expiry Analysis",
+    "organization": "VELAVAN MEDICAL",
+    "address": "115/8, DEVARPURAM ROAD,THIRUNELVELI",
+    "branch": "Demo BRANCH",
+    "toDate": "14-02-2021",
+    "records": [
+        {
+            "expiry": "12-02-2021",
+            "inventoryName": "PPG MET 0.3MG TABLET",
+            "batchNo": "48LSV5678UJI234A",
+            "closing": "150",
+            "assetValue": "750.00"
+        },
+        {
+            "expiry": "20-02-2012",
+            "inventoryName": "PPG MET 0.3MG TABLET",
+            "batchNo": "48LSV5",
+            "closing": "150",
+            "assetValue": "750.00"
+        },
+        {
+            "expiry": "05-02-2021",
+            "inventoryName": "PPG &MET 0.3MG TABLET",
+            "batchNo": "48LSV5",
+            "closing": "150",
+            "assetValue": "750.00"
+        }
+    ]
+}
