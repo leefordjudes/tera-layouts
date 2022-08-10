@@ -1,0 +1,87 @@
+title = "{{title}}"
+conformance = "Minimal"
+paper_size = {width = 210, height = 297}
+
+[decorator]
+type = "SimplePageDecorator"
+margins = { top = 10, right = 10, bottom = 10, left = 10 }
+
+{# Header #}
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{title}}"
+style = {font_size = 17, bold = true}
+
+{# Body #}
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{organization}}"
+style = {font_size = 17, bold = true}
+
+{# Footer #}
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{footer}}"
+style = {font_size = 17, bold = true}
+
+{% if address and address != "" %} 
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{address}}"
+style = {font_size = 17, bold = true}
+{% endif %}
+
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{mobile}}"
+style = {font_size = 17, bold = true}
+
+[[body.element]]
+type = "TableLayout"
+weight = [18, 2, 80]
+padding = {top = 1}
+text_style={ bold=true, font_size=12, line_spacing=20}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value="Branch"
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value=" : "
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value="branches"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value="Inventory"
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value=" : "
+[[body.element.row.element]]
+type="Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value="inventory"
