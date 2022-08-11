@@ -28,21 +28,13 @@ alignment="Center"
 value="{{title}}"
 style = {font_size = 13}
 
-{% if fromDate %}
 [[body.element]]
 type = "Text"
 alignment = "Center"
+padding = {bottom = 2}
 [[body.element.content]]
 value="{{fromDate}} to {{toDate}}"
 style = {font_size= 11, bold= true}
-{% else %}
-[[body.element]]
-type = "Text"
-alignment = "Center"
-[[body.element.content]]
-value="As On Date: {{toDate}}"
-style = {font_size=11, bold= true}
-{% endif %}
 
 [[body.element]]
 type = "PaddedElement"
@@ -56,28 +48,80 @@ type="BlankLine"
 type = "TableLayout"
 weight = [18, 2, 80]
 padding = {top = 1}
-text_style = {bold = true, font_size = 12, line_spacing = 1.5}
+text_style = {bold = true, font_size = 12}
 
 [[body.element.row]]
 [[body.element.row.element]]
 type = "Text"
 [[body.element.row.element.content]]
 value = "Branch"
-padding = {top = 1}
 [[body.element.row.element]]
 type = "Text"
 [[body.element.row.element.content]]
 value = ":"
-padding = {top = 1}
 [[body.element.row.element]]
 type = "Text"
 [[body.element.row.element.content]]
 value = "{{branch}}"
+
+[[body.element]]
+type = "TableLayout"
+weight = [18, 2, 80]
 padding = {top = 1}
+text_style = {bold = true, font_size = 12}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Inventory"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{inventory}}"
+
+[[body.element]]
+type = "TableLayout"
+weight = [18, 2, 45, 18, 2, 15]
+padding = {top = 1, bottom = 1}
+text_style = {bold = true, font_size = 12}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Opening Stock"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{balance.opening}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Closing Stock"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+alignment="Right"
+[[body.element.row.element.content]]
+value = "{{balance.closing}}"
+style = {shrink = true}
 
 [[body.element]]
 type = "PaddedElement"
-padding = {top = 1}
+padding = {top = 1, bottom = 1}
 [body.element.element]
 type="BlankLine"
 {% endblock header_table %}
@@ -85,44 +129,32 @@ type="BlankLine"
 {% block records_head %}
 [[body.element]]
 type = "TableLayout"
-weight = [12, 43, 15, 14, 16]
-padding = {top = 1, left = 1}
+weight = [60, 20, 20]
+padding = {top = 1, bottom = 1}
 text_style = {bold = true, font_size = 12}
 
 [[body.element.row]]
-[[body.element.row.element]]
-type = "Text"
-[[body.element.row.element.content]] 
-value =  "Expiry"
-padding = {top = 1, left = 1}
-[[body.element.row.element]]
-type = "Text"
-[[body.element.row.element.content]] 
-value =  "Particulars"
-padding = {top = 1, left = 1}
-[[body.element.row.element]]
-type = "Text"
-[[body.element.row.element.content]] 
-value =  "BatchNo"
-padding = {top = 1}
 
 [[body.element.row.element]]
 type = "Text"
-alignment = "Right"
-[[body.element.row.element.content]] 
-value =  "Stock"
-padding = {top = 1, right = 1}
-
+padding = {top = 1, bottom = 1}
+[[body.element.row.element.content]]
+value = "Particulars"
 [[body.element.row.element]]
 type = "Text"
-alignment = "Right"
-[[body.element.row.element.content]] 
-value =  "Value"
-padding = {top = 1, right = 1}
+padding = {top = 1, bottom = 1}
+[[body.element.row.element.content]]
+value = "Inward"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, bottom = 1}
+alignment="Right"
+[[body.element.row.element.content]]
+value = "Outward"
 
 [[body.element]]
 type = "PaddedElement"
-padding = {top = 1}
+padding = {top = 1, bottom = 1}
 [body.element.element]
 type="BlankLine"
 {% endblock records_head %}
@@ -130,7 +162,7 @@ type="BlankLine"
 {% block records_body%}
 [[body.element]]
 type = "TableLayout"
-weight = [12, 43, 15, 14, 16]
+weight = [60, 20, 20]
 text_style = {font_size = 11}
 padding = {top = 1, bottom = 1}
 
@@ -140,7 +172,7 @@ inner = true
 outer = true
 [body.element.cell_decorator.line_style]
 thickness = 0.1
-color = {greyscale = 127} 
+color = {greyscale = 127}
 
 {% for record in records %}
 [[body.element.row]]
@@ -148,38 +180,25 @@ color = {greyscale = 127}
 type = "Text"
 padding = {top =1, right =1, bottom =1, left =1}
 [[body.element.row.element.content]]
-value = "{{record.expiry}}"
-style = {shrink = true}
-[[body.element.row.element]]
-type = "Text"
-padding = {top =1, right =1, bottom =1, left =1}
-[[body.element.row.element.content]]
-value = "{{record.inventoryName}}"
-style = {shrink = true}
-[[body.element.row.element]]
-type = "Text"
-padding = {top =1, right =1, bottom =1, left =1}
-[[body.element.row.element.content]]
-value = "{{record.batchNo}}"
+value = "{{record.particulars}}"
 style = {shrink = true}
 [[body.element.row.element]]
 type = "Text"
 alignment = "Right"
 padding = {top =1, right =1, bottom =1, left =1}
 [[body.element.row.element.content]]
-value = "{{record.closing}}"
+value = "{{record.inward}}"
 style = {shrink = true}
 [[body.element.row.element]]
 type = "Text"
 alignment = "Right"
 padding = {top =1, right =1, bottom =1, left =1}
 [[body.element.row.element.content]]
-value = "{{record.assetValue}}"
+value = "{{record.outward}}"
 style = {shrink = true}
 
 {% endfor %} 
 {% endblock records_body%}
-
 
 {% block footer%}
 
@@ -199,7 +218,7 @@ text_style = {bold = true, font_size = 12}
 type = "Text"
 padding = {top =1}
 [[body.element.row.element.content]]
-value = "Total Stock:  {{closing}}"
+value = "Total Inward:  {{balance.inward}}"
 style = {shrink = true}
 
 [[body.element.row.element]]
@@ -207,6 +226,16 @@ type = "Text"
 alignment = "Right"
 padding = {top =1}
 [[body.element.row.element.content]]
-value = "Total Value:  Rs.{{assetValue}}"
-style = {shrink = true}  
+value = "Total Outward:  {{balance.outward}}"
+style = {shrink = true}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
 {% endblock footer%}
+
+
+
+

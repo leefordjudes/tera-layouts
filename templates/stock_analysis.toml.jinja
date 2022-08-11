@@ -26,23 +26,15 @@ type = "Text"
 alignment="Center"
 [[body.element.content]]
 value="{{title}}"
-style = {font_size = 13}
+style = {font_size = 13, bold = true}
 
-{% if fromDate %}
 [[body.element]]
 type = "Text"
 alignment = "Center"
+padding = {bottom = 2}
 [[body.element.content]]
-value="{{fromDate}} to {{toDate}}"
+value="As On Date: {{asOnDate}}"
 style = {font_size= 11, bold= true}
-{% else %}
-[[body.element]]
-type = "Text"
-alignment = "Center"
-[[body.element.content]]
-value="As On Date: {{toDate}}"
-style = {font_size=11, bold= true}
-{% endif %}
 
 [[body.element]]
 type = "PaddedElement"
@@ -54,26 +46,128 @@ type="BlankLine"
 {% block header_table %}
 [[body.element]]
 type = "TableLayout"
-weight = [18, 2, 80]
+weight = [28, 2, 70]
 padding = {top = 1}
 text_style = {bold = true, font_size = 12, line_spacing = 1.5}
 
 [[body.element.row]]
 [[body.element.row.element]]
 type = "Text"
+padding = {top = 1}
 [[body.element.row.element.content]]
 value = "Branch"
-padding = {top = 1}
 [[body.element.row.element]]
 type = "Text"
+padding = {top = 1}
 [[body.element.row.element.content]]
 value = ":"
-padding = {top = 1}
 [[body.element.row.element]]
 type = "Text"
+padding = {top = 1}
 [[body.element.row.element.content]]
 value = "{{branch}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
 padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Inventory"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "{{inventory}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Manufacturer"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "{{manufacturer}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Section"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "{{section}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Groupby"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "{{groupBy}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Stock value calculated by"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "{{basedOn}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Generated On"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "{{generatedOn}}"
 
 [[body.element]]
 type = "PaddedElement"
@@ -82,55 +176,49 @@ padding = {top = 1}
 type="BlankLine"
 {% endblock header_table %}
 
+
 {% block records_head %}
 [[body.element]]
 type = "TableLayout"
-weight = [12, 43, 15, 14, 16]
-padding = {top = 1, left = 1}
+weight = [10, 50, 20, 20]
+padding = {top = 1, bottom = 1}
 text_style = {bold = true, font_size = 12}
 
 [[body.element.row]]
 [[body.element.row.element]]
 type = "Text"
-[[body.element.row.element.content]] 
-value =  "Expiry"
 padding = {top = 1, left = 1}
+[[body.element.row.element.content]]
+value = "Sl.No"
 [[body.element.row.element]]
 type = "Text"
-[[body.element.row.element.content]] 
-value =  "Particulars"
 padding = {top = 1, left = 1}
+[[body.element.row.element.content]]
+value = "{{groupBy}}"
 [[body.element.row.element]]
 type = "Text"
-[[body.element.row.element.content]] 
-value =  "BatchNo"
-padding = {top = 1}
-
-[[body.element.row.element]]
-type = "Text"
-alignment = "Right"
-[[body.element.row.element.content]] 
-value =  "Stock"
+alignment="Right"
 padding = {top = 1, right = 1}
-
+[[body.element.row.element.content]]
+value = "Stock"
 [[body.element.row.element]]
 type = "Text"
-alignment = "Right"
-[[body.element.row.element.content]] 
-value =  "Value"
 padding = {top = 1, right = 1}
+alignment="Right"
+[[body.element.row.element.content]]
+value = "Value"
 
 [[body.element]]
 type = "PaddedElement"
-padding = {top = 1}
+padding = {top = 1, bottom = 1}
 [body.element.element]
 type="BlankLine"
 {% endblock records_head %}
-
+ 
 {% block records_body%}
 [[body.element]]
 type = "TableLayout"
-weight = [12, 43, 15, 14, 16]
+weight = [10, 50, 20, 20]
 text_style = {font_size = 11}
 padding = {top = 1, bottom = 1}
 
@@ -140,7 +228,7 @@ inner = true
 outer = true
 [body.element.cell_decorator.line_style]
 thickness = 0.1
-color = {greyscale = 127} 
+color = {greyscale = 127}
 
 {% for record in records %}
 [[body.element.row]]
@@ -148,20 +236,12 @@ color = {greyscale = 127}
 type = "Text"
 padding = {top =1, right =1, bottom =1, left =1}
 [[body.element.row.element.content]]
-value = "{{record.expiry}}"
-style = {shrink = true}
+value = "{{loop.index}}"
 [[body.element.row.element]]
 type = "Text"
 padding = {top =1, right =1, bottom =1, left =1}
 [[body.element.row.element.content]]
-value = "{{record.inventoryName}}"
-style = {shrink = true}
-[[body.element.row.element]]
-type = "Text"
-padding = {top =1, right =1, bottom =1, left =1}
-[[body.element.row.element.content]]
-value = "{{record.batchNo}}"
-style = {shrink = true}
+value = "{{record.name}}"
 [[body.element.row.element]]
 type = "Text"
 alignment = "Right"
@@ -174,12 +254,11 @@ type = "Text"
 alignment = "Right"
 padding = {top =1, right =1, bottom =1, left =1}
 [[body.element.row.element.content]]
-value = "{{record.assetValue}}"
+value = "{{record.value}}"
 style = {shrink = true}
 
 {% endfor %} 
 {% endblock records_body%}
-
 
 {% block footer%}
 
@@ -207,6 +286,12 @@ type = "Text"
 alignment = "Right"
 padding = {top =1}
 [[body.element.row.element.content]]
-value = "Total Value:  Rs.{{assetValue}}"
-style = {shrink = true}  
+value = "Total Value:  Rs.{{value}}"
+style = {shrink = true}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
 {% endblock footer%}

@@ -1,7 +1,34 @@
 {
-    "title":"Sale Test",
-    "organization":"RK",
-    "footer":"Footer",
-    "mobile":"987654321,321654987",
-    "xyz":""
+    "title": "Inventory Information",
+    "organization": "VELAVAN & MEDICAL",
+    "address": "115/8, DEVARPURAM ROAD,THOOTHUKUDI",
+    "branches": "DP &ROAD BRANCH, EP ROAD BRANCH",
+    "inventory": "Mask",
+    "records": [{
+        "batchNo": "A1",
+        "expiry": "2021-02-01",
+        "closing": 1,
+        "pRate": 1.50,
+        "mrp": 2.50,
+        "sRate": 2.00,
+        "value": 22222.50
+    },{
+        "batchNo": "B1",
+        "expiry": null,
+        "closing": 2,
+        "pRate": 1.60,
+        "mrp": 2.60,
+        "sRate": 2.60,
+        "value": 2225888888.60
+    },{
+        "batchNo": "C1",
+        "expiry": "2021-02-02",
+        "closing": 5,
+        "pRate": 3.60,
+        "mrp": 4.60,
+        "sRate": 4.60,
+        "value": 2888.60
+    }],
+    "closing": 2534526,
+    "value": 555555.30
 }

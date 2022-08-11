@@ -1,0 +1,48 @@
+{
+    "title": "Accounts Outstanding",
+    "organization": "TEST ORG",
+    "asOnDate": "30-09-2021",
+    "account": "Vijay Pharmaceuticals",
+    "branch": "EP ROAD BRANCH",
+    "group": [
+        "branch",
+        "account"
+    ],
+    "sort": "account",
+    "generatedOn": "17-02-2022 4:50 PM",
+    "records": {
+        "Vijay &Pharmaceuticals": [
+            {
+                "accountName": "Vijay Pharmaceuticals",
+                "branchName": "Demo",
+                "closing": 510,
+                "credit": 510,
+                "debit": 0
+            },
+            {
+                "accountName": "MANOJ S",
+                "branchName": "Teat",
+                "closing": 510,
+                "credit": 510,
+                "debit": 0
+            },
+            {
+                "accountName": "SHREE",
+                "branchName": "Demo",
+                "closing": 560,
+                "credit": 510,
+                "debit": 0
+            },
+            {
+                "accountName": "HARINI SHREE",
+                "branchName": "Demo",
+                "closing": 5307899665.14,
+                "credit": 510,
+                "debit": 0
+            }
+        ]
+    },
+    "debit": "987.00 Dr",
+    "credit": "33915.31 Cr",
+    "closing": 510
+}

@@ -1,0 +1,78 @@
+{
+    "title": "Accounts Outstanding",
+    "organization": "TEST ORG",
+    "asOnDate": "30-09-2021",
+    "account": "Vijay &Pharmaceuticals",
+    "branch": "EP ROAD BRANCH",
+    "sort": "account",
+    "generatedOn": "17-02-2022 4:50 PM",
+    "records": {
+        "RF& Marketing": [
+            {
+                "accountName": "RF& Marketing ",
+                "branchName": "Demo",
+                "closing": 495,
+                "date": "2022-01-18",
+                "days": 24,
+                "principalAmount": 4958596353785.10,
+                "refNo": "DEM63",
+                "voucherType": "SALE"
+            },
+            {
+                "accountName": "Royal Marketing ",
+                "branchName": "Demo",
+                "closing": 495,
+                "date": "2022-01-18",
+                "days": 24,
+                "principalAmount": 495,
+                "refNo": "DEM60",
+                "voucherType": "SALE"
+            },
+            {
+                "accountName": "Royal Marketing ",
+                "branchName": "Demo",
+                "closing": 495,
+                "date": "2022-01-18",
+                "days": 24,
+                "principalAmount": 495,
+                "refNo": "DEM60",
+                "voucherType": "SALE"
+            },
+            {
+                "accountName": "Shalom& Marketing ",
+                "branchName": "Demo",
+                "closing": 750,
+                "date": "2022-01-04",
+                "days": 24,
+                "principalAmount": 750,
+                "refNo": "DEM678",
+                "voucherType": "SALE"
+            }
+        ],
+        "Royal Marketing": [
+            {
+                "accountName": "RF Marketing ",
+                "branchName": "Demo",
+                "closing": 495,
+                "date": "2022-01-18",
+                "days": 24,
+                "principalAmount": 495,
+                "refNo": "DEM63",
+                "voucherType": "SALE"
+            },
+            {
+                "accountName": "Royal Marketing ",
+                "branchName": "Demo",
+                "closing": 49596875600.05,
+                "date": "2022-01-18",
+                "days": 24,
+                "principalAmount": 495,
+                "refNo": "DEM60",
+                "voucherType": "SALE"
+            }
+        ]
+    },
+    "debit": "987.00 Dr",
+    "credit": "33915.31 Cr",
+    "closing": 510
+}

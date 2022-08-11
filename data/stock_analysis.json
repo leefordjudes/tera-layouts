@@ -1,0 +1,33 @@
+{
+    "title": "Stock Analysis",
+    "organization": "TEST ORG",
+    "address": "115/8, DEVARPURAM &ROAD,THIRUNELVELI",
+    "asOnDate": "30-09-2021",
+    "branch": "DP ROAD BRANCH",
+    "inventory": "TATA CHAKRA &GOLD",
+    "manufacturer": "Chakra Tea & Tata Tea",
+    "section": "Tea",
+    "generatedOn": "17-02-2022 4:50 PM",
+    "group": "manufacturer",
+    "basedOn": "Average Cost",
+    "groupBy": "Section",
+    "records": [
+        {
+            "name": "NEW TREND",
+            "closing": "150",
+            "value": "7509666666.00"
+        },
+        {
+            "name": "GSK",
+            "closing": "6",
+            "value": "277.35"
+        },
+        {
+            "name": "P & G",
+            "closing": "15",
+            "value": "1300.00"
+        }
+    ],
+    "closing": "987",
+    "value": "339158523941253675963.31"
+}

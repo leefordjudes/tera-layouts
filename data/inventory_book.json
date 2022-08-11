@@ -1,0 +1,27 @@
+{
+    "title": "Inventory Book",
+    "organization": "TEST ORG",
+    "address": "115/8, DEVARPURAM ROAD,THIRUNELVELI",
+    "fromDate": "20-01-2022",
+    "toDate": "08-11-2022",
+    "branch": "East TVL Branch,TVL Branch",
+    "inventory": "3 ROSES 100G",
+    "records": [
+        {
+            "inward": "58",
+            "outward": "98",
+            "particulars": "feb/2016"
+        },
+        {
+            "inward": "4",
+            "outward": "5",
+            "particulars": "mar/2017"
+        }
+    ],
+    "balance": {
+        "inward": 2534526,
+        "outward": 555555.30,
+        "opening": 67.87,
+        "closing": 6546.30
+    }
+}

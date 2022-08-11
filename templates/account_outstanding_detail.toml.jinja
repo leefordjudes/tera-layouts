@@ -1,0 +1,369 @@
+title = "{{title}}"
+conformance = "Minimal"
+paper_size = {width = 210, height = 297}
+
+[decorator]
+type = "SimplePageDecorator"
+margins = { top = 10, right = 10, bottom = 10, left = 10 }
+
+{% block header_info %}
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{organization}}"
+style = {font_size = 17, bold = true}
+
+[[body.element]]
+type = "Text"
+alignment="Center"
+[[body.element.content]]
+value="{{title}}"
+style = {font_size = 13, bold = true}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
+{% endblock header_info %}
+
+{% block header_table %}
+[[body.element]]
+type = "TableLayout"
+weight = [18, 2, 80]
+padding = {top = 1}
+text_style = {bold = true, font_size = 12}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Account"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{account}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Branch"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{branch}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "As On Date"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{asOnDate}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Generated On"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{generatedOn}}"
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "Closing Balance"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = ":"
+[[body.element.row.element]]
+type = "Text"
+[[body.element.row.element.content]]
+value = "{{closing}}"
+style = {shrink = true}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1, bottom = 1}
+[body.element.element]
+type="BlankLine"
+{% endblock header_table %}
+
+
+{% block records_head %}
+[[body.element]]
+type = "TableLayout"
+weight = [22, 12, 18, 14, 13, 14, 7]
+padding = {top = 1, bottom = 1}
+text_style = {bold = true, font_size = 12}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, left = 1}
+[[body.element.row.element.content]]
+value = "Particulars"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Date"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Voucher Type"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1}
+[[body.element.row.element.content]]
+value = "Ref No"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, right = 1}
+[[body.element.row.element.content]]
+value = "Principal Amount"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, right = 1}
+alignment="Right"
+[[body.element.row.element.content]]
+value = "Balance"
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, right = 1}
+alignment="Right"
+[[body.element.row.element.content]]
+value = "Days"
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1, bottom = 1}
+[body.element.element]
+type="BlankLine"
+{% endblock records_head %}
+
+{% block records_body%}
+{% if sort == "account" %}
+{% for key, value in records %}
+[[body.element]]
+type = "TableLayout"
+weight = [100]
+text_style = {font_size = 11, bold = true}
+padding = {top = 1, bottom = 1}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, left = 1}
+[[body.element.row.element.content]]
+value = "{{key}}"
+
+[[body.element]]
+type = "TableLayout"
+weight = [22, 12, 18, 14, 13, 14, 7]
+text_style = {font_size = 11}
+padding = {top = 1, bottom = 1}
+
+[body.element.cell_decorator]
+type = "SimpleCellDecorator"
+inner = true
+outer = true
+[body.element.cell_decorator.line_style]
+thickness = 0.1
+color = {greyscale = 127}
+
+{% for rec in value %}
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.branchName}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.date}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.voucherType}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.refNo}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.principalAmount}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.closing}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.days}}"
+style = {shrink = true}
+{% endfor %}
+{% endfor %}
+
+{% else %}
+{% for key, value in records %}
+[[body.element]]
+type = "TableLayout"
+weight = [100]
+text_style = {font_size = 11, bold = true}
+padding = {top = 1, bottom = 1}
+
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top = 1, left = 1}
+[[body.element.row.element.content]]
+value = "{{key}}"
+
+[[body.element]]
+type = "TableLayout"
+weight = [22, 12, 18, 14, 13, 14, 7]
+text_style = {font_size = 11}
+padding = {top = 1, bottom = 1}
+
+[body.element.cell_decorator]
+type = "SimpleCellDecorator"
+inner = true
+outer = true
+[body.element.cell_decorator.line_style]
+thickness = 0.1
+color = {greyscale = 127}
+
+{% for rec in value %}
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.accountName}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.date}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.voucherType}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.refNo}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.principalAmount}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.closing}}"
+style = {shrink = true}
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1, right =1, bottom =1, left =1}
+[[body.element.row.element.content]]
+value = "{{rec.days}}"
+style = {shrink = true}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% endblock records_body%}
+
+
+{% block footer%}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
+
+[[body.element]]
+type = "TableLayout"
+weight = [50, 50]
+padding = {top = 1, bottom = 1}
+text_style = {bold = true, font_size = 12}
+[[body.element.row]]
+[[body.element.row.element]]
+type = "Text"
+padding = {top =1}
+[[body.element.row.element.content]]
+value = "Total Debit:  {{debit}}"
+style = {shrink = true}
+
+[[body.element.row.element]]
+type = "Text"
+alignment = "Right"
+padding = {top =1}
+[[body.element.row.element.content]]
+value = "Total Credit:  {{credit}}"
+style = {shrink = true}
+
+[[body.element]]
+type = "PaddedElement"
+padding = {top = 1}
+[body.element.element]
+type="BlankLine"
+{% endblock footer%}
+

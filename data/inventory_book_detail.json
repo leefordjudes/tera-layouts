@@ -1,0 +1,33 @@
+{
+    "title": "Inventory Book",
+    "organization": "TEST ORG",
+    "address": "115/8, DEVARPURAM ROAD,THIRUNELVELI",
+    "fromDate": "20-01-2022",
+    "toDate": "08-11-2022",
+    "branch": "East TVL Branch,TVL Branch",
+    "inventory": "3 ROSES 100G",
+    "records": [
+        {
+            "date": "11-02-2021",
+            "inward": "58",
+            "outward": "98",
+            "particulars": "cash",
+            "refNo": "TVD21 ",
+            "voucherType": "Cash Sale"
+        },
+        {
+            "date": "12-03-2022",
+            "inward": "4",
+            "outward": "5",
+            "particulars": "cash",
+            "refNo": "TVD2178",
+            "voucherType": "Credit Sale"
+        }
+    ],
+    "balance": {
+        "inward": 2534526,
+        "outward": 555555.30,
+        "opening": 67.87,
+        "closing": 6546.30
+    }
+}
